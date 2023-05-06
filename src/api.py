@@ -67,6 +67,7 @@ class DiscordBuddy(PackageService):
             
     @post("start", public=True)
     def start(self) -> Dict[str, Any]:
+        """Start the Discord bot."""
         # Register event handlers
         self.bot.event(self.on_ready)
         self.bot.event(self.on_message)  # Register the on_message event handler
