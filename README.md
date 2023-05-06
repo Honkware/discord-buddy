@@ -1,45 +1,50 @@
-# Telegram Buddy Package
+# Discord Buddy Package 🤖
 
-## Creating a Telegram Buddy
+Create your very own AI-powered Discord buddy with a unique personality using the Discord Buddy package! Follow the simple steps below to get started.
 
-You can create a unique Telegram buddy in 2 minutes using this package.
+## 🚀 Creating a Discord Buddy
 
-**Step 1**: Open Telegram, click the search icon, and open a chat with the `BotFather` bot.
+### Step 1: Create a New Application
 
-<img src="screenshots/search-botfather.png" alt="Search Botfather" width="300"> 
+- Open Discord and go to the [Developer Portal](https://discord.com/developers/applications).
+- Click the "**New Application**" button to create a new application.
 
-**Step 2**: Type `/newbot` (or select it from the menu)
+### Step 2: Name Your Application
 
-<img src="screenshots/newbot.png" alt="New Bot" width="300"> 
+- Give the application a name (this does not have to be unique).
+- Click "**Create**" to proceed.
 
-**Step 3**: Give the bot a name (this does not have to be unique)
+### Step 3: Add a Bot to the Application
 
-<img src="screenshots/bot-name.png" alt="Bot Name" width="300"> 
+- In the application's settings, go to the "**Bot**" tab.
+- Click the "**Add Bot**" button to create a bot for the application.
 
-**Step 4**: Give the bot a username (this *must* be unique)
+### Step 4: Set Intents for the Bot
 
-<img src="screenshots/bot-username.png" alt="Bot Username" width="300"> 
+- In the "**Bot**" tab, scroll down to the "**Privileged Gateway Intents**" section.
+- Enable the "**Server Members Intent**" and "**Message Content Intent**" options.
 
-**Step 5**: Copy the full token (both the numbers and letters).  Keep this safe.
+### Step 5: Copy the Bot Token
 
-<img src="screenshots/copy-token.png" alt="Copy Token" width="300"> 
+- Copy the bot token by clicking the "**Copy**" button.
+- Keep this token safe, as you'll need it later.
 
-**Step 6 (Optional)**: Use the `/setuserpic` command to give your bot a profile photo.
+### Step 6: Customize Your Bot (Optional)
 
-**Step 7**: Visit https://steamship.com/packages/telegram-buddy/_create, fill out the three fields, and click create. 
-If you wish to use GPT-4 instead of GPT-3.5, open Optional Configuration and change the value.  GPT-4 is slower and more expensive, 
-but may produce more interesting results.
+- Customize your bot's profile picture, username, and other settings as desired.
 
-<img src="screenshots/create-instance.png" alt="Create Instance" width="300"> 
+### Step 7: Generate the Invite Link
 
-**Step 8**: Returning to Telegram, click the first link in the congratulations message, or search for your bot's username, and begin a conversation.
+- Go to the "**OAuth2**" tab in the application's settings.
+- In the "**Scopes**" section, select the "**bot**" option.
+- In the "**Bot Permissions**" section, select the permissions you want to grant to the bot (e.g., "Send Messages").
+- Copy the generated URL from the "**Scopes**" section. This is the invite link for your bot.
 
-## Using this Package as a Template
+## 🎉 Deploying Your Discord Buddy
 
-Want to extend the functionality?  Clone this repo and make it your own!
+- Run the `deploy.py` script to deploy the Discord Buddy package. This script will prompt you for the necessary configuration values, such as the bot token, bot name, and bot personality.
 
-Just change the package handle in steamship.json and you can deploy a different version.
+## 🎮 Using Your Discord Buddy
 
-More info here: https://docs.steamship.com/packages/developing/index.html
-
-Join our discord here: https://steamship.com/discord
+- Use the invite link you generated earlier to invite your Discord Buddy to your server.
+- Start a conversation with your Discord Buddy by mentioning it or replying to its messages.

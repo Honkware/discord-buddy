@@ -1,1 +1,1 @@
-"""Description of your app."""
+"""A package that allows quick creation of a Discord bot hosted on Steamship."""

@@ -56,3 +56,4 @@ def filter_blocks_for_prompt_length(max_tokens: int, blocks: List[Block]) -> Lis
 	block_indices = [block.index_in_file for block in blocks if block in retained_blocks]
 	logging.info(f"Filtered input.  Total tokens {total_length} Block indices: {block_indices}")
 	return block_indices
+
