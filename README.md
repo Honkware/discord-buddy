@@ -42,6 +42,20 @@ Create your very own AI-powered Discord buddy with a unique personality using th
 
 ## 🎉 Deploying Your Discord Buddy
 
+### Step 1: Install Required Packages
+
+- The required packages are listed in the `requirements.txt` file in your project directory.
+- Open your terminal and run the following command to install the required packages:
+`pip install -r requirements.txt`
+
+### Step 2: Log in to Steamship
+
+- Open your terminal and run the following command to log in to Steamship:
+`ship login`
+- Follow the prompts to log in to your Steamship account.
+
+### Step 2: Deploy the Discord Buddy Package
+
 - Run the `deploy.py` script to deploy the Discord Buddy package. This script will prompt you for the necessary configuration values, such as the bot token, bot name, and bot personality.
 
 ## 🎮 Using Your Discord Buddy
