@@ -3,12 +3,15 @@
 from typing import Type, Optional, Dict, Any
 import uuid
 import asyncio
+import threading
+import concurrent.futures
 from util import filter_blocks_for_prompt_length
 from steamship.invocable import Config, post, PackageService
 from steamship import SteamshipError, File, Block, Tag, PluginInstance
 from steamship.data.tags.tag_constants import TagKind, RoleTag
 from pydantic import Field
 import discord
+from discord.ext import commands
 
 class DiscordBuddyConfig(Config):
     """Config object containing required parameters to initialize a MyPackage instance."""
@@ -29,10 +32,10 @@ class DiscordBuddy(PackageService):
         self.model = "gpt-4" if self.config.use_gpt4 else "gpt-3.5-turbo"
         self.gpt4 = None
         intents = discord.Intents.default()
-        self.bot = discord.Client(intents=intents)  # Use discord.Client
+        self.bot = commands.Bot(command_prefix="", intents=intents)  # Use discord.ext.commands.Bot
 
-    def run_bot(self):
-        self.bot.run(self.config.bot_token)
+        self.bot.add_listener(self.on_ready)
+        self.bot.add_listener(self.on_message, 'on_message')
 
     async def on_ready(self):
         print(f'Logged in as {self.bot.user}')
@@ -65,17 +68,25 @@ class DiscordBuddy(PackageService):
                 response = self.response_for_exception(e)
             await message.channel.send(response)
             
+    def start_bot(self):
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.bot.start(self.config.bot_token))
+        loop.close()
+
     @post("start", public=True)
     def start(self) -> Dict[str, Any]:
         """Start the Discord bot."""
-        # Register event handlers
-        self.bot.event(self.on_ready)
-        self.bot.event(self.on_message)  # Register the on_message event handler
-        
-        # Start the bot
-        self.run_bot()
+        print("Starting bot...")  # Debugging print statement
+
+        # Start the bot in a new thread using a ThreadPoolExecutor
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(self.start_bot)
+            print("Bot started in a new thread")
+
         return {"status": "Bot started"}
-    
+
+
     @post("stop", public=True)
     def stop(self) -> Dict[str, Any]:
         """Stop the Discord bot."""
